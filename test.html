@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Time of Day</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+		* {padding:0; margin:0;}
+		html {background-color:#ccc;}
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+			max-width:960px; /* keeps from getting too large on wide screen */
+			width:90%; /* shrink to fit screen */
+			margin:auto; /* center in html element */
+			background-color:#fff;
+			padding:20px;
+			min-height:100%; /* keeps from getting too large on wide screen */
+			}
+		img.flexible {
+			float:right;
+			display:inline-block;
+			padding:20px;
+			max-width:300px; /* actual size of image */
+			width:33%; /* approximate size taken on screen in maximum view */
+		}
+		p {margin:10px;}
+		ul {margin: 20px;}
+		h1,h2,h3,h4,h5,h6{
+			font-weight:normal;
+			margin:10px;
+			}
+		h1.masthead {margin-top:0;}
+		footer {
+			text-align:center;
+			clear:both; /* ride below all items */
+			}
+		nav{
+			text-align:center; /* centers the nav */
+		}
+		
+		nav ul {
+				list-style:none; /* removes the bullets */
+			}
+		nav ul li
+			{
+				display:inline-block; /* makes horizontal, but able to declare margins */
+				margin:0 2%; /* margin left-right, gets smaller as necessary */
+			}
+		nav a:hover{
+			text-decoration: none;
+		}	
+    </style>
+</head>
+<body>
+	<header>
+		<h1 class="masthead">Time of Day</h1>
+
+	</header>
+    <main>
+	 <header>
+		<h3>A JavaScript project by Dolores Eusebio for IT121</h3>
+		<!-- add greeting from time of day to project -->
+		<h3 id="greeting">Greeting goes here</h3>
+	</header>
+	<br>
+	 <p>This page demonstrates how to use Javascript Date Object.</p>
+	 <p>Watch the page content and layout change throughout the day, here is the times that this page will change:</p>
+	 <p>
+		<ul>
+			<li>Morning (5am to 12 noon)</li>
+			<li>Afternoon (12 noon to 6pm)</li>
+			<li>Evening (6pm to 11pm)</li>
+			<li>Night (11pm to 5am)</li>
+	 	</ul>
+	 </p>
+	 <p></p>
+	 <p></p>
+	  <img id = "pic" src="images/evening.jpg" alt="Time of Day Image" class="flexible" />
+     <footer>
+      <p><small>&copy; 2021-<span id="copyright"></span> by 
+          YOUR NAME HERE, All Rights Reserved ~ 
+          <a id="html-checker" href="#">Check HTML</a> ~ 
+          <a id="css-checker" href="#">Check CSS</a></small>
+     </p>
+    </footer>
+  </main>
+ <script>
+
+	/*
+
+		We a unique:
+		message
+		color
+		image
+		
+		for each of the times of day
+
+		Morning (5am to 12 noon)
+		Afternoon (12 noon to 6pm)
+		Evening (6pm to 11pm)
+		Night (11pm to 5am)
+		---------------------------------
+		myDate = new Date();			
+		myHour = myDate.getHours();		
+
+		//REMOVE THE FOLLOWING LINE
+		myHour = 16;
+
+		if(myHour < 12){//morning
+		alert("Good Morning!");
+
+		}else{//afternoon
+		alert("Good Afternoon!");
+
+		}
+
+	*/
+
+
+	
+	
+	let myDate = new Date();
+	let myCopyright = myDate.getFullYear();
+	let myHour = myDate.getHours();	
+	let myGreeting = "";
+	let myColor = "";
+	let myPic = "";
+	let dayOfWeekName = new Date().toLocaleString('default', {weekday: 'long'});
+	
+	let mins = ('0'+myDate.getMinutes()).slice(-2);
+	let hour = myDate.getHours();
+	let myTimeofDay = "";
+
+	if(hour < 12){
+		myTimeofDay = myDate.getHours() + ":" + mins + " AM";
+	}else{
+		myTimeofDay = (myDate.getHours() - 12) + ":" + mins + " PM";
+	}
+
+	if(myHour >= 5 && myHour < 12){//morning
+		
+		myGreeting = "Good Morning, today is " + dayOfWeekName + ". Time check: " + myTimeofDay;
+		myColor = "yellow";
+		myPic = "morning.jpg";
+		let time = myDate.getHours() + ":" + myDate.getMinutes();
+
+	}else if(myHour >= 12 && myHour < 18){//afternoon
+	
+		myGreeting = "Good Afternoon, today is " + dayOfWeekName + ". Time check: " + myTimeofDay;
+		myColor = "green";
+		myPic = "afternoon.jpg";
+	}else if(myHour >= 18 && myHour < 23){//evening
+		myGreeting = "Good Evening, today is " + dayOfWeekName + ". Time check: " + myTimeofDay;
+		myColor = "orange";
+		myPic = "evening.jpg";
+	}else{
+		myGreeting = "Good Night, today is " + dayOfWeekName + ". Time check: " + myTimeofDay;
+		myColor = "purple";
+		myPic = "night.jpg";
+	}
+	
+
+	//add images folder to myPic
+	myPic = "images/" + myPic;
+
+
+	document.getElementById("copyright").innerHTML = myCopyright;
+	//disply the greeting from the if statement on h3 with id = greeting
+	document.getElementById("greeting").innerHTML = myGreeting;
+
+	//display the color from the if statement on html element
+	document.querySelector("html").style.backgroundColor = myColor;
+
+	//change picture depending on time of day
+	document.getElementById("pic").src = myPic;
+
+    //https://tinyurl.com/dynamic-html-checker
+    document.getElementById("html-checker").setAttribute("href","https://validator.w3.org/nu/?doc=" + location.href);
+      
+    document.getElementById("css-checker").setAttribute("href","https://jigsaw.w3.org/css-validator/validator?uri=" + location.href);  
+ </script>
+</body>
+</html>
