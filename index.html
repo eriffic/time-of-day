@@ -83,25 +83,25 @@
 
 
 	if(myHour >= 5 && myHour < 12){
-	myGreeting = "Good Morning, today is" + dayOfWeekName;
+	myGreeting = "Good Morning, today is " + dayOfWeekName;
 	myColor = "orange";
 	myPic = "morning.jpg";
 	console.log("morning")
 
 	}else if(myHour >= 12 && myHour < 18){
-	myGreeting = "Good Afternoon, today is" + dayOfWeekName;
+	myGreeting = "Good Afternoon, today is " + dayOfWeekName;
 	myColor = "blue";
 	myPic = "afternoon.jpg";
 	console.log("afternoon")
 
 	}else if(myHour >= 18 && myHour < 23){
-	myGreeting = "Good Evening, today is" + dayOfWeekName;
+	myGreeting = "Good Evening, today is " + dayOfWeekName;
 	myColor = "gold";
 	myPic = "evening.jpg";
 	console.log("evening")
 
 	}else if(myHour >= 23){
-	myGreeting = "Good Night, today is" + dayOfWeekName;
+	myGreeting = "Good Night, today is " + dayOfWeekName;
 	myColor = "navy";
 	myPic = "night.jpg";
 	console.log("night")
@@ -109,7 +109,7 @@
 
 	myPic = "images/" + myPic;
 
-		document.getElementById("copyright").innerHTML = myCopyright;
+
 		document.getElementById("greeting").innerHTML = myGreeting;
 		document.querySelector("html").style.backgroundColor = myColor;
 		document.getElementById("pic").src = myPic;
