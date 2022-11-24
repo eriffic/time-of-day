@@ -119,7 +119,7 @@ let dayOfWeekName = new Date().toLocaleString('default', {weekday: 'long'});
 // loading an empty string to print
 
 //DATA FOR TESTING - REMOVE NEXT LINE!!
-//myHour = 7;
+myHour = 24;
 
 if(myHour >= 5 && myHour < 12){
   //  alert("Good afternoon!");
@@ -139,7 +139,7 @@ if(myHour >= 5 && myHour < 12){
 	myPic = "evening.jpg";
 	
 
-}else if(myHour >= 23 && myHour < 5){
+}else if(myHour >= 23){
 	myGreeting = "Good Night, today is " + dayOfWeekName;
 	myColor = "navy";
 	myPic = "night.jpg";
